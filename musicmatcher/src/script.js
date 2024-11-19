@@ -8,11 +8,13 @@ import { initializeApp } from "firebase/app";
 import { getDatabase, ref, set, get } from "firebase/database"
 
 const firebaseConfig = {
-    apiKey: "AIzaSyDraqYDDgFC5TW6EQCiSyFTVinLvJ3UvPc",
-    authDomain: "musicmatcherdb.firebaseapp.com",
-    databaseURL: "https://musicmatcherdb-default-rtdb.firebaseio.com/",
-    projectId: "musicmatcherdb",
-    storageBucket: "musicmatcherdb.appspot.com",
+    apiKey: "AIzaSyCXgx0pzw94dKCd9EJ2dnfpTml4JSH80P0",
+    authDomain: "musicmatcher-3dbaa.firebaseapp.com",
+    projectId: "musicmatcher-3dbaa",
+    storageBucket: "musicmatcher-3dbaa.firebasestorage.app",
+    messagingSenderId: "439318905313",
+    appId: "1:439318905313:web:a9fe711b95ed3a1b4cd2a0",
+    measurementId: "G-VYL6WM6TL0"
 };
 
 const app = initializeApp(firebaseConfig);
