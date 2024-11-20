@@ -6,77 +6,135 @@
     <script src="src/script.js" type="module"></script>
 
     <style>
+      /* Body styles for uniformity */
       body {
-	  background-color: black;
-	  color: lightgray;
-	  align-items: center;
-	  justify-content: left;
+        background-color: #121212;
+        color: lightgray;
+        font-family: 'Arial', sans-serif;
+        text-align: center;
+        margin: 0;
+        padding: 0;
       }
 
-      h1, h2, h3 {
-	  text-align: center;
-	  color: white;
-      }
-
+      /* Header styles */
       h1 {
-	  font-size: 2.5rem;
+        font-size: 3rem;
+        color: white;
+        margin: 20px 0;
+        position: relative; /* Enable relative positioning for the Profile button */
+        display: inline-block;
+      }
+
+      .profile-button {
+        position: absolute;
+        right: 20px;
+        top: 20px;
+        font-size: 1rem;
+        color: white;
+        background-color: #444;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        text-decoration: none;
+        transition: background-color 0.3s;
+      }
+
+      .profile-button:hover {
+        background-color: #666;
+      }
+
+      h2, h3 {
+        color: white;
+        margin: 20px 0;
       }
 
       h2 {
-	  font-size: 2rem;
+        font-size: 2rem;
       }
 
       h3 {
-	  font-size: 1.5rem;
+        font-size: 1.8rem;
+        border-bottom: 2px solid white;
+        padding-bottom: 5px;
+        display: inline-block;
       }
 
-      p {
-	  font-size: 1.5rem;
-	  color: white;
+      /* Container for artists and songs */
+      #topArtistsContainer, #topSongsContainer {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 20px;
+        padding: 20px;
+        margin: 0 auto;
       }
 
-      #findMatches {
-	  text-align: center;
+      /* Artist and song card styles */
+      .artist, .song {
+        background-color: #222;
+        border-radius: 10px;
+        padding: 15px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+        text-align: center;
+        color: white;
+        font-size: 1rem;
+        transition: transform 0.3s, box-shadow 0.3s;
       }
-      
+
+      /* Image styling */
+      .artist img, .song img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        margin-bottom: 10px;
+      }
+
+      /* Hover effects */
+      .artist:hover, .song:hover {
+        transform: scale(1.05);
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.4);
+      }
+
+      /* Button styles */
       #findMatchesButton {
-	  font-size: 2rem;
+        font-size: 1.5rem;
+        padding: 10px 20px;
+        margin: 20px 0;
+        background-color: #444;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+        transition: background-color 0.3s;
       }
 
-      ol {
-	  font-size: 1.5rem;
+      #findMatchesButton:hover {
+        background-color: #666;
       }
-
-      li {
-	  font-size: 1.5rem;
-      }
-      
-		  
     </style>
-    
   </head>
   <body>
-    <h1>MusicMatcher: Make new connections</h1>
+    <h1>MusicMatcher</h1>
+    <!-- Profile Button -->
+    <a href="profile.html" class="profile-button">Profile</a>
+
     <section id="profile">
-    <h2>Logged in as <span id="displayName"></span></h2>
-    <span id="avatar"></span>
-    <p>
-      <!-- Profile Link: <a id="url" href="#"></a> -->
-    </p>
+      <h2>Welcome <span id="displayName"></span></h2>
+      <span id="avatar"></span>
     </section>
 
     <section id="stats">
-      <h3>Your Top Artists:</h3>
-      <ol id="topArtistsList"></ol>
+      <h3>Your Top 5 Artists:</h3>
+      <div id="topArtistsContainer"></div>
 
-      <h3>Your Top Songs:</h3>
-      <ol id="topSongsList"></ol>
+      <h3>Your Top 5 Songs:</h3>
+      <div id="topSongsContainer"></div>
     </section>
 
     <section id="findmatches">
       <button id="findMatchesButton">Find Matches!</button>
       <div id="displaymatches"></div>
     </section>
-    
   </body>
 </html>

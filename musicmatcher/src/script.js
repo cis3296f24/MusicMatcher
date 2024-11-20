@@ -124,20 +124,70 @@ async function getTopArtists(token) {
 }
 
 function showTopArtists(topArtists) {
-    const topArtistsList = document.getElementById("topArtistsList");
-    topArtistsList.innerHTML = "";
+    const container = document.getElementById("topArtistsContainer");
+    container.innerHTML = ""; // Clear previous content
 
-    if (topArtists.items.length == 0) {
-	document.getElementById("topArtistsList").innerText = "No artists found";
-    } else {
-	const artistCount = Math.min(topArtists.items.length, 10);
-	for (let i = 0; i < artistCount; i++) {
-	    const artist = topArtists.items[i];
-	    const listItem = document.createElement("li");
-	    listItem.innerText = artist.name;
-	    topArtistsList.appendChild(listItem);
-	}
+    if (!topArtists.items || topArtists.items.length === 0) {
+        container.innerText = "No artists found.";
+        return;
     }
+
+    // Show only the top 5 artists
+    topArtists.items.slice(0, 5).forEach(artist => {
+        const artistDiv = document.createElement("div");
+        artistDiv.className = "artist";
+
+        const artistName = document.createElement("div");
+        artistName.innerText = artist.name;
+
+        if (artist.images && artist.images.length > 0) {
+            const artistImage = document.createElement("img");
+            artistImage.src = artist.images[0].url;
+            artistImage.alt = artist.name;
+            artistImage.style.width = "100px";
+            artistImage.style.borderRadius = "50%";
+            artistDiv.appendChild(artistImage);
+        }
+
+        artistDiv.appendChild(artistName);
+        container.appendChild(artistDiv);
+    });
+}
+
+function showTopSongs(topSongs) {
+    const container = document.getElementById("topSongsContainer");
+    container.innerHTML = ""; // Clear previous content
+
+    if (!topSongs.items || topSongs.items.length === 0) {
+        container.innerText = "No songs found.";
+        return;
+    }
+
+    // Show only the top 5 songs
+    topSongs.items.slice(0, 5).forEach(song => {
+        const songDiv = document.createElement("div");
+        songDiv.className = "song";
+
+        // Add the song's name and artist
+        const songInfo = document.createElement("div");
+        songInfo.innerText = `${song.name} by ${song.artists[0]?.name}`;
+
+        // Add the song's image if available
+        if (song.album.images && song.album.images.length > 0) {
+            const songImage = document.createElement("img");
+            songImage.src = song.album.images[0].url; // Use the first available image
+            songImage.alt = song.name;
+            songImage.style.width = "100px"; // Set width for consistency
+            songImage.style.borderRadius = "10px"; // Rounded rectangle image
+            songDiv.appendChild(songImage);
+        }
+
+        // Append the song's info below the image
+        songDiv.appendChild(songInfo);
+
+        // Add the song div to the container
+        container.appendChild(songDiv);
+    });
 }
 
 async function getTopSongs(token) {
@@ -146,23 +196,6 @@ async function getTopSongs(token) {
     });
 
     return await result.json();
-}
-
-function showTopSongs(topSongs) {
-    const topSongsList = document.getElementById("topSongsList");
-    topSongsList.innerHTML = "";
-
-    if (topSongs.items.length == 0) {
-	document.getElementById("topSongsList").innerText = "No songs found";
-    } else {
-	const songCount = Math.min(topSongs.items.length, 10);
-	for (let i = 0; i < songCount; i++) {
-	    const song = topSongs.items[i];
-	    const listItem = document.createElement("li");
-	    listItem.innerText = `${song.name} by ${song.artists[0].name}`;
-	    topSongsList.appendChild(listItem);
-	}
-    }
 }
 
 function populateUI(profile) {
