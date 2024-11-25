@@ -102,17 +102,19 @@ h1, h2, h3, p, ol, li {
 
 .scrollable-songs-container {
         max-height: 400px; /* Set max height to control the visible area */
-        overflow-y: auto;  /* Enable vertical scrolling */
+        overflow-x: auto;  /* Enable horizontal scrolling */
         padding: 1rem;     /* Padding for better visual spacing */
         margin-top: 1rem;  /* Add space above the container */
         border: 1px solid rgba(132, 128, 128, 0.5); /* Optional: light border for separation */
         width: 100%;       /* Make it take full width of the parent container */
+        display:flex;
       }
 
       .song-item {
         display: flex;      /* Flexbox to align cover and text side by side */
         align-items: center; /* Align cover and text vertically centered */
         margin-bottom: 1rem; /* Space between songs */
+        flex-direction: column; 
       }
 
       .song-cover {
