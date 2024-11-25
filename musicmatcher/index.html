@@ -101,11 +101,11 @@ h1, h2, h3, p, ol, li {
 
 
 .scrollable-songs-container {
-        max-height: 400px; /* Set max height to control the visible area */
+        max-height: 308px; /* Set max height to control the visible area */
         overflow-x: auto;  /* Enable horizontal scrolling */
         padding: 1rem;     /* Padding for better visual spacing */
         margin-top: 1rem;  /* Add space above the container */
-        border: 1px solid rgba(132, 128, 128, 0.5); /* Optional: light border for separation */
+        /* Optional: light border for separation */
         width: 100%;       /* Make it take full width of the parent container */
         display:flex;
       }
@@ -113,19 +113,20 @@ h1, h2, h3, p, ol, li {
       .song-item {
         display: flex;      /* Flexbox to align cover and text side by side */
         align-items: center; /* Align cover and text vertically centered */
-        margin-bottom: 1rem; /* Space between songs */
+        margin-right: 124px;
         flex-direction: column; 
       }
 
       .song-cover {
-        width: 50px;        /* Set cover image width */
-        height: 50px;       /* Set cover image height */
-        margin-right: 1rem; /* Space between image and song name */
+        width: 225px;        /* Set cover image width */
+        height: 225px;       /* Set cover image height */
+        margin-right: 34px; /* Space between image and song name */
       }
 
       .song-name {
         font-size: 1.5rem;  /* Set song name font size */
         color: white;       /* Song text color */
+        margin-bottom: 17px;
       }
 
 .song-pill {
@@ -162,10 +163,10 @@ h1, h2, h3, p, ol, li {
 .artist-name {
   font-size: 24px;             /* Set font size */
   font-weight: 600;            /* Semi-bold for Inter */
-  color: white;                /* White color */
+  color: lightgray;                  /* White color */
   font-family: 'Inter', sans-serif;
   text-align: center;          /* Center the text below the image */
-  margin: 0; 
+  margin-bottom: 10px; 
 }
 
 .scrollable-artists-container {
@@ -234,7 +235,15 @@ h1, h2, h3, p, ol, li {
       <h3 class="section-heading">Your Top Songs</h3>
       <div class="divider"></div>
       <div id="topSongsScrollable" class="scrollable-songs-container">
-        <!-- Placeholder for Top Songs -->
+        
+        <div class="song-item">
+          <img class="song-cover" src="song-cover-url" alt="cover">
+          <div class="song-info">
+            <span class="song-name">Song Name</span>
+            <span class="artist-name">Artist Name</span>
+            <span class="song-pill">Song</span>
+          </div>
+        </div>
       </div>
 
      

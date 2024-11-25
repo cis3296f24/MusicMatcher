@@ -168,7 +168,12 @@ async function showTopSongs(topSongs) {
     if (topSongs.items.length === 0) {
         topSongsContainer.innerText = "No songs found";
     } else {
-        topSongs.items.forEach(song => {
+        
+        // limit to the first 3 songs
+        const limitedSongs = topSings.items.slice(0,3);
+        
+        
+        limitedSongs.items.forEach(song => {
             // Create container for each song item
             const songItem = document.createElement("div");
             songItem.classList.add("song-item");
