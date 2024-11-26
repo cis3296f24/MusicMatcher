@@ -236,13 +236,13 @@ async function showTopSongs(topSongs) {
             // Create a span for the song name
             const songName = document.createElement("span");
             songName.classList.add("song-name");
-            songName.textContent = song.name;
+            songName.textContent = song.name + " by ";
             songInfo.appendChild(songName);
 
             // Create a span for the artist name
             const artistName = document.createElement("span");
             artistName.classList.add("artist-name");
-            artistName.textContent = song.artists[0].name;
+            artistName.textContent = song.artists[0].name + " ";
             songInfo.appendChild(artistName);
 
             // Create a span for the "Song" pill label
@@ -304,6 +304,8 @@ async function findMatches(userID, topArtists, topSongs) {
 
     const allUserData = snapshot.val();
 
+    document.getElementById("displaymatches").innerText = "";
+
     for (let userKey in allUserData) {
 	const user = allUserData[userKey];
 
@@ -337,7 +339,7 @@ async function findMatches(userID, topArtists, topSongs) {
 		matchInfo += `\n - ${songsInCommon.join(", ")} `;
 	    }
 
-	    document.getElementById("displaymatches").innerText += matchInfo + "\n";
+	    document.getElementById("displaymatches").innerText += matchInfo + "\n\n";
 	}
     }
 }
