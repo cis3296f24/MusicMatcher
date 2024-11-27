@@ -7,62 +7,67 @@
 
     <style>
       body {
-	  background-color: black;
-	  color: lightgray;
-	  align-items: center;
-	  justify-content: left;
+          background-color: black;
+          color: lightgray;
+          align-items: center;
+          justify-content: left;
       }
 
       h1, h2, h3 {
-	  text-align: center;
-	  color: white;
+          text-align: center;
+          color: white;
       }
 
       h1 {
-	  font-size: 2.5rem;
+          font-size: 2.5rem;
       }
 
       h2 {
-	  font-size: 2rem;
+          font-size: 2rem;
       }
 
       h3 {
-	  font-size: 1.5rem;
+          font-size: 1.5rem;
       }
 
       p {
-	  font-size: 1.5rem;
-	  color: white;
+          font-size: 1.5rem;
+          color: white;
       }
 
       #findMatches {
-	  text-align: center;
+          text-align: center;
       }
-      
+
       #findMatchesButton {
-	  font-size: 2rem;
+          font-size: 2rem;
       }
 
       ol {
-	  font-size: 1.5rem;
+          font-size: 1.5rem;
       }
 
       li {
-	  font-size: 1.5rem;
+          font-size: 1.5rem;
       }
-      
-		  
+
+      #listeningStats {
+          margin: 20px auto;
+          text-align: center;
+          font-size: 1.5rem;
+          color: white;
+      }
     </style>
-    
   </head>
   <body>
     <h1>MusicMatcher: Make new connections</h1>
+    
     <section id="profile">
-    <h2>Logged in as <span id="displayName"></span></h2>
-    <span id="avatar"></span>
-    <p>
-      <!-- Profile Link: <a id="url" href="#"></a> -->
-    </p>
+      <h2>Logged in as <span id="displayName"></span></h2>
+      <span id="avatar"></span>
+      <p>
+        <!-- Profile Link: <a id="url" href="#"></a> -->
+      </p>
     </section>
 
     <section id="stats">
@@ -71,12 +76,16 @@
 
       <h3>Your Top Songs:</h3>
       <ol id="topSongsList"></ol>
+
+      <!-- Added Listening Stats Div -->
+      <div id="listeningStats">
+        <!-- Dynamic listening stats will be displayed here -->
+      </div>
     </section>
 
     <section id="findmatches">
       <button id="findMatchesButton">Find Matches!</button>
       <div id="displaymatches"></div>
     </section>
-    
   </body>
 </html>
