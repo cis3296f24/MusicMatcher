@@ -185,23 +185,36 @@ function showTopArtists(topArtists) {
             const artistItem = document.createElement("div");
             artistItem.classList.add("artist-item");
 
+            // Create a clickable link for the artist
+            const artistLink = document.createElement("a");
+            artistLink.href = `https://open.spotify.com/artist/${artist.id}`;  // Link to artist's Spotify page
+            artistLink.target = "_blank";  // Open in a new tab
+
             // Create image element for the artist profile
             const artistImage = document.createElement("img");
             artistImage.classList.add("artist-image");
             artistImage.src = artist.images[0]?.url || 'placeholder.jpg'; // Use artist image or placeholder
-            artistItem.appendChild(artistImage);
+
+            // Append the image to the artist link
+            artistLink.appendChild(artistImage);
 
             // Create a span for the artist name
             const artistName = document.createElement("span");
             artistName.classList.add("artist-name");
             artistName.textContent = artist.name;
-            artistItem.appendChild(artistName);
+
+            // Append the artist name to the link
+            artistLink.appendChild(artistName);
+
+            // Append the link to the artist item container
+            artistItem.appendChild(artistLink);
 
             // Append the artist item to the container
             topArtistsContainer.appendChild(artistItem);
         });
     }
 }
+
 
 async function getTopSongs(token) {
     const result = await fetch("https://api.spotify.com/v1/me/top/tracks", {
@@ -223,11 +236,16 @@ async function showTopSongs(topSongs) {
             const songItem = document.createElement("div");
             songItem.classList.add("song-item");
 
+            // Create a clickable link for the song
+            const songLink = document.createElement("a");
+            songLink.href = `https://open.spotify.com/track/${song.id}`;  // Link to song's Spotify page
+            songLink.target = "_blank";  // Open in a new tab
+
             // Create image element for the song cover
             const songCover = document.createElement("img");
             songCover.classList.add("song-cover");
             songCover.src = song.album.images[0]?.url || 'placeholder.jpg'; // Use song cover image or placeholder
-            songItem.appendChild(songCover);
+            songLink.appendChild(songCover); // Append cover to the link
 
             // Create container for song information
             const songInfo = document.createElement("div");
@@ -251,14 +269,17 @@ async function showTopSongs(topSongs) {
             songPill.textContent = "Song";
             songInfo.appendChild(songPill);
 
-            // Append the song information to the song item
-            songItem.appendChild(songInfo);
+            // Append song info to the link
+            songLink.appendChild(songInfo);
+
+            // Append the song link to the song item
+            songItem.appendChild(songLink);
 
             // Append the song item to the container
             topSongsContainer.appendChild(songItem);
         });
     }
-  }
+}
 
   function populateUI(profile) {
     /* Display user's data in the UI */
