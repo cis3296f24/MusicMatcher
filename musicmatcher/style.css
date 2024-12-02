@@ -85,17 +85,17 @@ body {
     
     h1 {
     font-size: 2.5rem;
-    color: white;
+    color: #ffffff;
     }
 
     h2 {
     font-size: 2rem;
-    color: lightgray; /* Lighter color for "Logged in as" */
+    color: #1ed760; /* Lighter color for "Logged in as" */
     }
 
     p {
 	  font-size: 1.5rem;
-	  color: white;
+	  color: #ffffff;
     }
 
       #findMatches {
@@ -117,7 +117,8 @@ body {
 /* Section Heading Styling */
 .section-heading {
   text-align: left;  /* Ensure section headings are aligned left */
-  font-size: 64px;   /* Set the size */
+  font-size: 32px;   /* Set the size */
+  color: #1ed760; /* Set the color */
   font-weight: bold; /* Set bold weight */
   margin: 0;               /* Remove default margin */
   padding-bottom: 0.2rem;
