@@ -184,8 +184,9 @@ h1, h2, h3, p, ol, li {
       }
 
       .song-name {
-        font-size: 128px;  /* Set song name font size */
+        font-size: 24px;  /* Set song name font size */
         color: white;       /* Song text color */
+        overflow-wrap: break-word;
       }
 
 
