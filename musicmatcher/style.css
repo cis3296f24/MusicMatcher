@@ -60,13 +60,12 @@
 }
 
 body {
-	  background-color: black;
-	  color: lightgray;
+    color: #d3d3d3;
 	  align-items: center;
 	  justify-content: left;
     font-family: 'Inter', sans-serif;
     position: relative;
-    background: linear-gradient(to bottom, rgb(0, 0, 0), rgb(15, 0, 31));
+    background: black linear-gradient(to bottom, rgb(0, 0, 0), rgb(15, 0, 31));
     transition: background-color 0.3s ease, opacity 0.3s ease;
     opacity: 0.9;
     
@@ -90,7 +89,7 @@ body {
 
     h2 {
     font-size: 2rem;
-    color: #1ed760; /* Lighter color for "Logged in as" */
+    color: #ffffff; /* Lighter color for "Logged in as" */
     }
 
     p {
@@ -117,8 +116,8 @@ body {
 /* Section Heading Styling */
 .section-heading {
   text-align: left;  /* Ensure section headings are aligned left */
-  font-size: 32px;   /* Set the size */
-  color: #1ed760; /* Set the color */
+  font-size: 64px;   /* Set the size */
+  color: #ffffff; /* Set the color */
   font-weight: bold; /* Set bold weight */
   margin: 0;               /* Remove default margin */
   padding-bottom: 0.2rem;
@@ -165,7 +164,7 @@ h1, h2, h3, p, ol, li {
 }
      .song-item {
         display: flex;              /* Flexbox for aligning items */
-        flex-direction: row;     /* Stack items vertically */
+        flex-direction: column;     /* Stack items vertically */
         align-items: flex-start;        /* Center align items */
         margin-bottom: 124px;       /* Set spacing between song items */
         margin-right: 200px;
@@ -184,9 +183,10 @@ h1, h2, h3, p, ol, li {
       }
 
       .song-name {
-        font-size: 24px;  /* Set song name font size */
-        color: white;       /* Song text color */
-        overflow-wrap: break-word;
+        max-width: 500px;
+        font-size: 32px;  /* Set song name font size */
+        color: #ffffff;       /* Song text color */
+        /*overflow-wrap: normal; !* Enable word wrap *!*/
       }
 
 
@@ -237,7 +237,7 @@ h1, h2, h3, p, ol, li {
 .artist-name {
   font-size: 24px;             /* Set font size */
   font-weight: 600;            /* Semi-bold for Inter */
-  color: white;                /* White color */
+  color: #ffffff;                /* White color */
   font-family: 'Inter', sans-serif;
   text-align: center;          /* Center the text below the image */
   margin: 0; 
@@ -253,7 +253,7 @@ h1, h2, h3, p, ol, li {
 /* Styling for the Pill Button */
 .pill-button {
   background-color: #646cff;  /* Button background color */
-  color: white;               /* Button text color */
+  color: #ffffff;               /* Button text color */
   font-size: 16px;            /* Button font size */
   padding: 0.5rem 1.5rem;     /* Padding for top/bottom and left/right */
   border: none;               /* Remove default border */
@@ -286,7 +286,7 @@ h1, h2, h3, p, ol, li {
     cursor: grab;                     /* Indicate that the container is draggable */
 }
 .song-matches-container p {
-    color: lightgray;
+    color: #d3d3d3;
     font-size: 1rem;
     margin: 0.5rem 0;
 }
@@ -314,7 +314,7 @@ h1, h2, h3, p, ol, li {
 }
 
 #displayName {
-  color: white; /* Username text color */
+  color: #ffffff; /* Username text color */
   font-size: 2rem;
 }
 
