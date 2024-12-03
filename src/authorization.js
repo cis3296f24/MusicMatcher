@@ -17,13 +17,9 @@ export async function authorize() {
         console.log("found code");
         window.history.replaceState({}, document.title, window.location.pathname);
         await getAccessToken(clientID, code);
-
-        return;
     } else if (accessToken && await tokenValid(accessToken)) {
-        return;
     } else if (refreshToken && await tokenValid(refreshToken)) {
         await refreshAccessToken(refreshToken);
-        return;
     } else {
         await requestAuthorization(clientID);
     }   
@@ -88,14 +84,16 @@ export async function getAccessToken(clientID, code) {
         }),
     }
 
+    let response
 
     try {
-        const response = await fetch('/spotify/api/token', payload);
+        response = await fetch('/spotify/api/token', payload);
     }
-        // spotify api offline?
+        // spority api offline?
     catch (error) {
         throw new Error(`Error fetching Spotify Access Token: ${error}`);
     }
+
     // spotify api error?
     if (!response.ok) {
         throw new Error(`Spotify Access Token HTTP error! ${response.status}`);
@@ -103,15 +101,15 @@ export async function getAccessToken(clientID, code) {
     // spotify api not JSON?
     try{
         const data = await response.json();
+        localStorage.setItem("spotifyAccessToken", data.access_token);
+        localStorage.setItem("spotifyRefreshToken", data.refresh_token);
+        console.log("Spotify Access Token Saved!");
     }
     catch (error){
         throw new Error(`Spotify Access Token not JSON?: ${response.text()}`);
     }
-    // SAVE TOKEN! It worked!?!
-    localStorage.setItem("spotifyAccessToken", data.access_token);
-    localStorage.setItem("spotifyRefreshToken", data.refresh_token);
-    console.log("Spotify Access Token Saved!");
 }
+
 
 
 async function refreshAccessToken(refreshToken) {
