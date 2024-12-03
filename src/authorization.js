@@ -1,7 +1,7 @@
 import * as userData from './user_data.js';
 
 export const clientID = "9f79956a03b04bcfb5df0ff2a5a78059";
-export const redirectURI = "http://localhost:3000";
+export const redirectURI = "http://localhost:5173/callback";
 const scope = "user-read-private user-read-email user-top-read user-follow-modify user-modify-playback-state";
 const authURL = new URL("https://accounts.spotify.com/authorize");
 
