@@ -4,7 +4,7 @@ export const clientID = "9f79956a03b04bcfb5df0ff2a5a78059";
 //export const redirectURI = "https://localhost:5173/callback";
 export const redirectURI = "https://musicmatcherdb.web.app/callback";
 const scope = "user-read-private user-read-email user-top-read user-follow-modify user-modify-playback-state";
-const authURL = new URL("/spotify/authorize");
+const authURL = new URL("https://accounts.spotify.com/authorize");
 
 let accessToken = localStorage.getItem("spotifyAccessToken");
 let refreshToken = localStorage.getItem("spotifyRefreshToken");
@@ -68,7 +68,7 @@ async function generateCodeChallenge(codeVerifier) {
 	.replace(/\+/g, '-')
 	.replace(/\//g, '_')
 	.replace(/=+$/, '');
-}  
+}
 
 export async function getAccessToken(clientID, code) {
     console.log(`code: ${code}`);
@@ -88,17 +88,31 @@ export async function getAccessToken(clientID, code) {
         }),
     }
 
-    const response = await fetch('/spotifyapi/token', payload);
-    const data = await response.json();
 
-    if (response.ok) {
-        localStorage.setItem("spotifyAccessToken", data.access_token);
-        localStorage.setItem("spotifyRefreshToken", data.refresh_token);
-        console.log("OK");
-    } else {
-        console.error("could not get access token: ", data.error, data.error_description);
+    try {
+        const response = await fetch('/spotify/api/token', payload);
     }
+        // spotify api offline?
+    catch (error) {
+        throw new Error(`Error fetching Spotify Access Token: ${error}`);
+    }
+    // spotify api error?
+    if (!response.ok) {
+        throw new Error(`Spotify Access Token HTTP error! ${response.status}`);
+    }
+    // spotify api not JSON?
+    try{
+        const data = await response.json();
+    }
+    catch (error){
+        throw new Error(`Spotify Access Token not JSON?: ${response.text()}`);
+    }
+    // SAVE TOKEN! It worked!?!
+    localStorage.setItem("spotifyAccessToken", data.access_token);
+    localStorage.setItem("spotifyRefreshToken", data.refresh_token);
+    console.log("Spotify Access Token Saved!");
 }
+
 
 async function refreshAccessToken(refreshToken) {
     const url = "/spotifyapi/token";
