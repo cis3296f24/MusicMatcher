@@ -83,7 +83,7 @@ export async function getAccessToken(clientID, code) {
             client_id: clientID,
             grant_type: 'authorization_code',
             code,
-            redirect_uri: 'http://localhost:5173/callback',
+            redirect_uri: redirectURI,
             code_verifier: verifier,
         }),
     }
