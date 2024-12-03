@@ -41,7 +41,7 @@ export async function requestAuthorization(clientID) {
         scope, 
         code_challenge_method: 'S256',
         code_challenge: challenge,
-        redirect_uri: redirectURI,
+        redirect_uri: authURL,
     };
 
     authURL.search = new URLSearchParams(params).toString();
