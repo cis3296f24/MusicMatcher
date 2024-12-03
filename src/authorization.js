@@ -4,7 +4,7 @@ export const clientID = "9f79956a03b04bcfb5df0ff2a5a78059";
 //export const redirectURI = "https://localhost:5173/callback";
 export const redirectURI = "https://musicmatcherdb.web.app/callback";
 const scope = "user-read-private user-read-email user-top-read user-follow-modify user-modify-playback-state";
-const authURL = new URL("https://accounts.spotify.com/authorize");
+const authURL = new URL("/spotifyauthorize");
 
 let accessToken = localStorage.getItem("spotifyAccessToken");
 let refreshToken = localStorage.getItem("spotifyRefreshToken");
@@ -83,12 +83,12 @@ export async function getAccessToken(clientID, code) {
             client_id: clientID,
             grant_type: 'authorization_code',
             code,
-            redirect_uri: 'https://accounts.spotify.com/authorize',
+            redirect_uri: '/spotifyauthorize',
             code_verifier: verifier,
         }),
     }
 
-    const response = await fetch('https://accounts.spotify.com/api/token', payload);
+    const response = await fetch('/spotifyapi/token', payload);
     const data = await response.json();
 
     if (response.ok) {
@@ -101,7 +101,7 @@ export async function getAccessToken(clientID, code) {
 }
 
 async function refreshAccessToken(refreshToken) {
-    const url = "https://accounts.spotify.com/api/token";
+    const url = "/spotifyapi/token";
 
     const payload = {
         method: 'POST',
