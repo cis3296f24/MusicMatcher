@@ -83,7 +83,7 @@ export async function getAccessToken(clientID, code) {
             client_id: clientID,
             grant_type: 'authorization_code',
             code,
-            redirect_uri: redirectURI,
+            redirect_uri: 'https://accounts.spotify.com/authorize',
             code_verifier: verifier,
         }),
     }
