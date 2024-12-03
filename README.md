@@ -1,16 +1,17 @@
 #  Music Matcher
 
 ## Overview
-MusicMatcher is a web application designed to connect users based on their music preferences. By integrating with Spotify’s API, users can link their Spotify accounts through OAuth to create personalized profiles showcasing their listening history.
+MusicMatcher is a web application designed to connect users based on their music preferences. Through MusicMatcher, a Spotify user can find other Spotify listeners who like some of the same songs and artists. Once you have your matches, you can check out their Spotify profiles to see what else they listen to! If you want, you can even follow their profiles right from the MusicMatcher homepage.
+
+![homepage](./homepage.png)
 
 ## Features
-- **User Profile Creation**: Users can build a profile displaying their music taste, generated from Spotify listening data.
-- **Music Taste Analytics**: The app visualizes listening statistics using interactive charts and graphics.
+- **Top Artists & Songs**: The homepage displays the user's favorite songs and artists. 
 - **User Matching**: Matches users with similar music tastes based on their listening history, enabling them to discover other listeners with shared interests.
-- **Profile Exploration**: Users can view the profiles of their matches and explore their music preferences to find new songs and artists.
+- **Profile Exploration**: Users can view the Spotify profiles of their matches and explore their music preferences to find new songs and artists.
 
 ## Tech Stack
-- **Frontend**: JavaScript, vite, libraries like Recharts for data visualization.
+- **Frontend**: JavaScript, vite,
 - **Backend**: Firebase for storing and using user data
 - **API Integration**: Spotify API for obtaining user data.
 
@@ -25,15 +26,19 @@ cd MusicMatcher/musicmatcher
 
 # Install dependencies
 npm install
-npm install firebase
-If Vite is not installed globally (optional), install it:
-npm install -g vite
 
 # Start the development server
 npm run dev
 ```
 # Open the WebApp
 In your browser, visit: http://localhost:5173/
+
+Since MusicMatcher is currently in development mode, only authorized Spotify accounts can use it for now. 
+
+Sign in with these credentials to see how it works:
+email: mws001122@gmail.com
+
+password: temppw4demo
 
 ## License
 This project is open-source and available under the MIT License.
