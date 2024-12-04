@@ -1,4 +1,32 @@
-/**
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: script.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: script.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>/**
  * The JavaScript code provided is a web application that integrates with the Spotify API to fetch user
  * data, display top artists and songs, store user information in a Firebase database, and find matches
  * with other users based on common music preferences.
@@ -61,7 +89,7 @@ window.addEventListener("load", async () => {
 	window.history.replaceState({}, document.title, window.location.pathname);
     }
     
-    if (accessToken && await tokenValid(accessToken)) {
+    if (accessToken &amp;&amp; await tokenValid(accessToken)) {
 	try {
 	    profile = await fetchProfile(accessToken);
 	    topArtists = await getTopArtists(accessToken);
@@ -84,7 +112,7 @@ window.addEventListener("load", async () => {
     if (refreshToken) {
 	try {
 	    const newAccessToken = await refreshAccessToken(refreshToken);
-	    if (newAccessToken && await tokenValid(newAccessToken)) {
+	    if (newAccessToken &amp;&amp; await tokenValid(newAccessToken)) {
 		localStorage.setItem("spotifyAccessToken", newAccessToken);
 		profile = await fetchProfile(newAccessToken);
 		topArtists = await getTopArtists(newAccessToken);
@@ -137,7 +165,7 @@ function generateCodeVerifier(length) {
     let text = '';
     let possible = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
     
-    for (let i = 0; i < length; i++) {
+    for (let i = 0; i &lt; length; i++) {
 	text += possible.charAt(Math.floor(Math.random() * possible.length));
     }
 
@@ -216,14 +244,7 @@ async function getTopArtists(token) {
 
     return await result.json();
 }
-/**
- * Displays the user's top artists in the UI.
- * Fetches artist information such as names and profile pictures
- * and appends them to the DOM element for display.
- * 
- * @param {object} topArtists - List of the user's top Spotify artists.
- *                             Each artist includes an ID, name, and image URL.
- */
+
 function showTopArtists(topArtists) {
     const topArtistsContainer = document.getElementById("topArtistsScrollable");
     topArtistsContainer.innerHTML = ""; // Clear any existing content
@@ -269,8 +290,6 @@ function showTopArtists(topArtists) {
  * Fetches the user's top songs from Spotify.
  * @param {string} token - Spotify access token.
  * @returns {object} - List of top songs.
- * This data is fetched using Spotify's "Get User's Top Items" endpoint.
- */
  */
 
 async function getTopSongs(token) {
@@ -280,14 +299,7 @@ async function getTopSongs(token) {
 
     return await result.json();
 }
-/**
- * Displays the user's top songs in the UI.
- * Fetches song information such as names, cover images, and artists
- * and appends them to the DOM element for display.
- * 
- * @param {object} topSongs - List of the user's top Spotify songs.
- *                            Each song includes an ID, name, artist, and album image URL.
- */
+
 async function showTopSongs(topSongs) {
     const topSongsContainer = document.getElementById("topSongsScrollable");
     topSongsContainer.innerHTML = ""; // Clear any existing content
@@ -363,7 +375,7 @@ async function showTopSongs(topSongs) {
     displayNameContainer.innerText = profile.display_name;
 
     // Check if the profile image exists
-    if (profile.images && profile.images[0]) {
+    if (profile.images &amp;&amp; profile.images[0]) {
         // Create an image element for the profile picture
         const profileImage = new Image(100, 100); // Set the size of the profile picture
         profileImage.src = profile.images[0].url; // Set the image source to the profile image URL
@@ -406,11 +418,6 @@ async function storeTopLists(userID, displayName, topArtistsList, topSongsList) 
 }
 
 /* Find matches in the database who like the same song(s) and/or artist(s)  */
-/**
- * Event listener for the "Find Matches" button.
- * When clicked, it triggers the `findMatches` function, which searches the Firebase database
- * for other users who share common music preferences (artists or songs).
- */
 document.getElementById("findMatchesButton").addEventListener("click", async () => {
     const userID = profile.id;
 
@@ -453,14 +460,14 @@ async function findMatches(userID, topArtists, topSongs) {
 
         // Find artists in common
         for (let artist of topArtists.items) {
-            if (user.topArtistsList && user.topArtistsList.some(item => item.name == artist.name)) {
+            if (user.topArtistsList &amp;&amp; user.topArtistsList.some(item => item.name == artist.name)) {
                 artistsInCommon.push(artist);
             }
         }
 
         // Find songs in common
         for (let song of topSongs.items) {
-            if (user.topSongsList && user.topSongsList.some(item => item.name == song.name && item.artist == song.artists[0].name)) {
+            if (user.topSongsList &amp;&amp; user.topSongsList.some(item => item.name == song.name &amp;&amp; item.artist == song.artists[0].name)) {
                 songsInCommon.push(song);
             }
         }
@@ -539,3 +546,26 @@ async function findMatches(userID, topArtists, topSongs) {
 }
 
 
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#clientID">clientID</a></li><li><a href="global.html#fetchProfile">fetchProfile</a></li><li><a href="global.html#findMatches">findMatches</a></li><li><a href="global.html#generateCodeChallenge">generateCodeChallenge</a></li><li><a href="global.html#generateCodeVerifier">generateCodeVerifier</a></li><li><a href="global.html#getAccessToken">getAccessToken</a></li><li><a href="global.html#getTopArtists">getTopArtists</a></li><li><a href="global.html#getTopSongs">getTopSongs</a></li><li><a href="global.html#populateUI">populateUI</a></li><li><a href="global.html#redirectToAuthCodeFlow">redirectToAuthCodeFlow</a></li><li><a href="global.html#tokenValid">tokenValid</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.4</a> on Wed Dec 04 2024 14:03:02 GMT-0500 (Eastern Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
