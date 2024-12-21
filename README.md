@@ -36,8 +36,8 @@ In your browser, visit: http://localhost:5173/
 Since MusicMatcher is currently in development mode, only authorized Spotify accounts can use it for now. 
 
 Sign in with these credentials to see how it works:
-email: mws001122@gmail.com
 
+email: deleted
 password: temppw4demo
 
 ## License
