@@ -38,6 +38,8 @@ Since MusicMatcher is currently in development mode, only authorized Spotify acc
 Sign in with these credentials to see how it works:
 
 email: deleted
+
+
 password: temppw4demo
 
 ## License
